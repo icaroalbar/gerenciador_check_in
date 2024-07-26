@@ -11,7 +11,7 @@ import {
 
 const Home: React.FC = () => {
   const { data, error } = useFetch<APIResponse>(
-    "http://localhost:8080/dev/invited"
+    "https://zaiuk8m065.execute-api.us-east-1.amazonaws.com/dev/invited"
   );
 
   if (error) return <div>Falha ao carregar</div>;
