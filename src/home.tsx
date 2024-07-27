@@ -22,8 +22,8 @@ const Home: React.FC = () => {
   const pendentesCount = data.result.filter(item => item.confirmado.BOOL !== true).length;
 
   return (
-    <div className="flex justify-center">
-      <Card className="container p-0 m-7">
+    <section className="flex flex-col gap-y-2 justify-center" >
+      <Card className="container p-0 mt-7 rounded">
         <CardHeader>
           <CardTitle className="text-slate-500 text-xl">Lista de convidados</CardTitle>
           <div className="flex items-center gap-x-3 font-medium text-md">
@@ -32,11 +32,13 @@ const Home: React.FC = () => {
             <p className="text-primary">Pendentes: {pendentesCount}</p>
           </div>
         </CardHeader>
+      </Card>
+      <Card className="container py-4 px-0 mb-7 rounded">
         <CardContent>
           <DataTable columns={columns} data={data.result} />
         </CardContent>
       </Card>
-    </div>
+    </section>
   );
 };
 
