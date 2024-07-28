@@ -46,13 +46,12 @@ export default function Login() {
     setButtonDisabled(true);
     try {
       const response = await axios.post(
-        "https://api.dev.galgjur.com.br/login",
+        String(import.meta.env.VITE_LOGIN_USER),
         values
       );
       const { AccessToken } = response!.data.user.AuthenticationResult;
       localStorage.setItem("token", AccessToken);
-      console.log(AccessToken)
-      navigate("/");
+      navigate("/home");
     } catch (error: any) {
       setErrorLogin(error.response?.data?.error || "Houve um erro");
     } finally {

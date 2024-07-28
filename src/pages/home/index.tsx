@@ -12,7 +12,7 @@ import { APIResponse } from "@/pages/home/IPerson";
 
 const Home: React.FC = () => {
   const { data, error } = useFetch<APIResponse>(
-    "https://zaiuk8m065.execute-api.us-east-1.amazonaws.com/dev/invited"
+    String(import.meta.env.VITE_FIND_ALL_DATA)
   );
 
   if (error) return <div>Falha ao carregar</div>;

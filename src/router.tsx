@@ -7,7 +7,7 @@ import RedirectHomeRoute from "./middlewares/redirectHome.router";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: (
       <ProtectedRoute>
         <Layout>
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/login",
+    path: "/",
     element: (
       <RedirectHomeRoute>
         <Login />

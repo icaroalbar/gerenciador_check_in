@@ -12,7 +12,7 @@ export default function Layout({children}: ILayout) {
 
   async function logout() {
     localStorage.removeItem('token');
-    navigate("/login");
+    navigate("/");
   }
 
   return (

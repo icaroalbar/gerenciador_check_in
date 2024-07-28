@@ -5,7 +5,7 @@ const RedirectHomeRoute = ({ children }: ILayout) => {
   const token = localStorage.getItem('token');
 
   if (token) {
-    return <Navigate to="/" />;
+    return <Navigate to="/home" />;
   }
 
   return children;

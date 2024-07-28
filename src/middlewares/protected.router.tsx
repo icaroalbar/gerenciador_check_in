@@ -5,7 +5,7 @@ const ProtectedRoute = ({ children }: ILayout) => {
   const token = localStorage.getItem('token');
 
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   return children;
