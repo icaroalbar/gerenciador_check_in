@@ -5,14 +5,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { columns } from "@/pages/home/components/datatable/columns";
-import { DataTable } from "@/pages/home/components/datatable/data-table";
+import { columns } from "@/pages/home/components/partials/datatable/columns";
+import { DataTable } from "@/pages/home/components/partials/datatable/data-table";
 import { useFetch } from "@/hooks/useFetch";
 import { APIResponse } from "@/pages/home/IPerson";
 
 const Home: React.FC = () => {
   const { data, error } = useFetch<APIResponse>(
-    String(import.meta.env.VITE_FIND_ALL_DATA)
+    "https://zaiuk8m065.execute-api.us-east-1.amazonaws.com/dev/invited"
   );
 
   if (error) return <div>Falha ao carregar</div>;

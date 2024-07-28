@@ -46,7 +46,7 @@ export default function Login() {
     setButtonDisabled(true);
     try {
       const response = await axios.post(
-        String(import.meta.env.VITE_LOGIN_USER),
+        "https://api.dev.galgjur.com.br/login",
         values
       );
       const { AccessToken } = response!.data.user.AuthenticationResult;

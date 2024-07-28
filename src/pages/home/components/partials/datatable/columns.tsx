@@ -1,19 +1,11 @@
 "use client";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+
 import { Button } from "@/components/ui/button";
 import { IPerson } from "@/pages/home/IPerson";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, Check, CircleAlert, CircleCheckBig, Printer } from "lucide-react";
+import { ArrowUpDown, CircleAlert, CircleCheckBig } from "lucide-react";
+import { handlePrint } from "../printInvited/print-invited-handle";
+import PrintInvitedComponent from "../printInvited/print-invited-component";
 
 export type Payment = IPerson;
 
@@ -74,29 +66,9 @@ export const columns: ColumnDef<Payment>[] = [
     header: () => {
       return <div className="text-center">Ação</div>;
     },
-    cell: ({ getValue }) => {
+    cell: ({ row, getValue }) => {
       const isConfirmed = getValue<boolean>();
-      return (
-        <div className="flex justify-center">
-          <AlertDialog>
-            <AlertDialogTrigger className={`${!isConfirmed ? "bg-primary hover:bg-primary/80": "bg-lime-500 hover:bg-lime-500/80"}  flex items-center gap-x-2 transition-colors text-white font-medium rounded py-1 px-4`}>
-            {!isConfirmed ? <><Check size={15} /> Confirmar</> : <><Printer size={15} /> Reimprimir</>}
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Confirmar presença</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Ao clicar em confirmar, você vai estar confirmando a presença do convidado e imprimir sua etiqueta.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => window.print()}>Confirmar</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
-      );
+      return <PrintInvitedComponent isConfirmed={isConfirmed} onClick={() => handlePrint(row.original)} />
     },
   },
 ];
