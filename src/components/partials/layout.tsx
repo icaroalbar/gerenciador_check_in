@@ -1,9 +1,9 @@
 import { LogOut } from "lucide-react";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 import { useNavigate } from "react-router-dom";
 import { ReactNode } from "react";
 
-type ILayout = {
+export type ILayout = {
   children: ReactNode
 }
 
@@ -11,6 +11,7 @@ export default function Layout({children}: ILayout) {
   const navigate = useNavigate();
 
   async function logout() {
+    localStorage.removeItem('token');
     navigate("/login");
   }
 

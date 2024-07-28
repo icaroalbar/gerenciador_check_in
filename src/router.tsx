@@ -1,19 +1,27 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./home";
-import Login from "./login";
-import Layout from "./components/ui/partials/layout";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Layout from "./components/partials/layout";
+import ProtectedRoute from "./middlewares/protected.router";
+import RedirectHomeRoute from "./middlewares/redirectHome.router";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Layout>
-        <Home />
-      </Layout>
+      <ProtectedRoute>
+        <Layout>
+          <Home />
+        </Layout>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <RedirectHomeRoute>
+        <Login />
+      </RedirectHomeRoute>
+    ),
   },
 ]);

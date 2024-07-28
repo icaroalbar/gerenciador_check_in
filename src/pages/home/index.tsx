@@ -1,13 +1,14 @@
-import { columns } from "./datatable/columns";
-import { DataTable } from "./datatable/data-table";
-import { useFetch } from "./hooks/useFetch";
-import { APIResponse } from "./IPerson";
+
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { columns } from "@/pages/home/components/datatable/columns";
+import { DataTable } from "@/pages/home/components/datatable/data-table";
+import { useFetch } from "@/hooks/useFetch";
+import { APIResponse } from "@/pages/home/IPerson";
 
 const Home: React.FC = () => {
   const { data, error } = useFetch<APIResponse>(

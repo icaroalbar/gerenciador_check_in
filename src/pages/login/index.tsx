@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./components/ui/card";
+} from "../../components/ui/card";
 import {
   Form,
   FormControl,
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
-import { Button } from "./components/ui/button";
+import { Button } from "../../components/ui/button";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -45,10 +45,13 @@ export default function Login() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setButtonDisabled(true);
     try {
-      await axios.post(
+      const response = await axios.post(
         "https://api.dev.galgjur.com.br/login",
         values
       );
+      const { AccessToken } = response!.data.user.AuthenticationResult;
+      localStorage.setItem("token", AccessToken);
+      console.log(AccessToken)
       navigate("/");
     } catch (error: any) {
       setErrorLogin(error.response?.data?.error || "Houve um erro");

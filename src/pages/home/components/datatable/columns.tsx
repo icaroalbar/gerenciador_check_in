@@ -11,7 +11,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { IPerson } from "@/IPerson";
+import { IPerson } from "@/pages/home/IPerson";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Check, CircleAlert, CircleCheckBig, Printer } from "lucide-react";
 
