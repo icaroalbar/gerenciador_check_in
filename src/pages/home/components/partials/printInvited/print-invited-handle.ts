@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getPrintTemplate } from "./template-print";
+// import { getPrintTemplate } from "./template-print";
 import { IPerson } from "@/pages/home/IPerson";
 
 export const handlePrint = async (row: IPerson) => {
