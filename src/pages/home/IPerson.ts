@@ -1,4 +1,9 @@
-export interface IPerson {
+export interface IUpdateRequest {
+  id: {
+    S: string;
+  };
+}
+export interface IPerson extends IUpdateRequest{
   nome: {
     S: string;
   };
@@ -12,7 +17,6 @@ export interface IPerson {
     S: string;
   };
 }
-
 export interface APIResponse {
-  result: IPerson[];
+  response: IPerson[];
 }

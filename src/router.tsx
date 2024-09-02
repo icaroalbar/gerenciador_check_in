@@ -9,19 +9,19 @@ export const router = createBrowserRouter([
   {
     path: "/home",
     element: (
-      <ProtectedRoute>
+      // <ProtectedRoute>
         <Layout>
           <Home />
         </Layout>
-      </ProtectedRoute>
+      // </ProtectedRoute>
     ),
   },
   {
     path: "/",
     element: (
-      <RedirectHomeRoute>
+      // <RedirectHomeRoute>
         <Login />
-      </RedirectHomeRoute>
+      // </RedirectHomeRoute>
     ),
   },
 ]);

@@ -22,7 +22,6 @@ import {
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 
-
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -63,11 +62,11 @@ export function DataTable<TData, TValue>({
       </div>
       <Table>
         <TableHeader>
-          {table.getHeaderGroups().map((headerGroup, index) => (
-            <TableRow key={index}>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={index}>
+                  <TableHead key={header.id}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -82,13 +81,13 @@ export function DataTable<TData, TValue>({
         </TableHeader>
         <TableBody>
           {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row, index) => (
+            table.getRowModel().rows.map((row) => (
               <TableRow
-                key={index}
+                key={row.id}
                 data-state={row.getIsSelected() && "selected"}
               >
-                {row.getVisibleCells().map((cell, index) => (
-                  <TableCell key={index}>
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
